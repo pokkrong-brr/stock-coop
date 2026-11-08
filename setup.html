@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>ตรวจการเชื่อมต่อ · สต็อกสหกรณ์</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@600&display=swap" rel="stylesheet">
+<script src="config.js"></script>
+<style>
+:root{--ink:#0b2633;--ink2:#3d5a68;--mute:#6a8592;--acc:#0a78c2;--ok:#14804a;--bad:#c43a32;--card:rgba(255,255,255,.7);--line:rgba(11,38,51,.12)}
+@media (prefers-color-scheme:dark){:root{--ink:#e7f4f9;--ink2:#b4cbd5;--mute:#88a3af;--acc:#4db8ee;--ok:#5fd394;--bad:#ff8a7e;--card:rgba(16,40,52,.7);--line:rgba(255,255,255,.14)}
+  body{background:linear-gradient(180deg,#06294a,#031628)!important}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font:16px/1.6 "IBM Plex Sans Thai",system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,#6fcdf3,#d3f0fc 70%);padding:24px 16px}
+main{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.hero{border-radius:24px;padding:22px 24px;color:#fff;background:linear-gradient(120deg,#0a4f94,#0d78c6 45%,#26b4ea);box-shadow:0 16px 36px -12px rgba(8,80,150,.6)}
+h1{font:600 24px/1.3 Prompt,sans-serif;margin:0}
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.6);border-radius:20px;padding:20px}
+label{display:block;font-size:14px;color:var(--ink2);margin-bottom:6px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);font:inherit;font-size:15px;color:var(--ink);background:rgba(255,255,255,.8)}
+@media (prefers-color-scheme:dark){input{background:rgba(0,0,0,.25)}}
+button{margin-top:12px;border:0;border-radius:999px;padding:12px 22px;font:600 16px inherit;font-family:inherit;color:#fff;background:linear-gradient(135deg,#22aee9,#0a6db3);cursor:pointer}
+.res{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:15px;display:none}
+.res.ok{display:block;background:rgba(20,128,74,.12);color:var(--ok)}.res.bad{display:block;background:rgba(196,58,50,.12);color:var(--bad)}
+pre{white-space:pre-wrap;word-break:break-all;background:rgba(0,0,0,.06);padding:12px;border-radius:12px;font-size:13px;margin:8px 0 0}
+ol{margin:0;padding-left:20px}li{margin:4px 0}a{color:var(--acc)}
+</style>
+</head>
+<body>
+<main>
+  <div class="hero"><h1>ตรวจการเชื่อมต่อ Google Sheets</h1><div style="opacity:.9">ใช้ตอนติดตั้ง: ทดสอบว่าลิงก์ Apps Script ใช้ได้ก่อนใส่ใน config.js</div></div>
+  <div class="card">
+    <div id="cur" style="margin-bottom:12px"></div>
+    <label for="u">ลิงก์เว็บแอป Apps Script (ลงท้ายด้วย /exec)</label>
+    <input id="u" placeholder="https://script.google.com/macros/s/AKfycb.../exec" autocomplete="off" spellcheck="false">
+    <button id="go">ทดสอบการเชื่อมต่อ</button>
+    <div class="res" id="res"></div>
+  </div>
+  <div class="card"><b>ถ้าทดสอบไม่ผ่าน ให้ตรวจ</b>
+    <ol><li>ลิงก์ต้องลงท้ายด้วย <b>/exec</b> (ไม่ใช่ /dev)</li>
+      <li>ตอน Deploy เลือก “ดำเนินการในฐานะ: <b>ฉัน</b>” และ “ผู้ที่มีสิทธิ์เข้าถึง: <b>ทุกคน</b>”</li>
+      <li>วาง Code.gs แล้วกด <b>บันทึก</b> และ Deploy <b>เวอร์ชันใหม่</b> หลังแก้โค้ดทุกครั้ง</li>
+      <li>เปิดลิงก์ต่อท้ายด้วย <b>?api=ping</b> ในเบราว์เซอร์ ต้องเห็นข้อความ “พร้อมใช้งาน”</li></ol>
+    <p style="margin:12px 0 0"><a href="./">← กลับไปหน้าโปรแกรม</a></p></div>
+</main>
+<script>
+const $=id=>document.getElementById(id),cur=String(window.STOCK_API||'').trim();
+$('cur').innerHTML=cur?'ลิงก์ใน config.js ตอนนี้: <b style="word-break:break-all"></b>':'ยังไม่ได้ใส่ลิงก์ใน config.js';
+if(cur){$('cur').querySelector('b').textContent=cur;$('u').value=cur}
+function show(ok,html){const r=$('res');r.className='res '+(ok?'ok':'bad');r.innerHTML=html}
+$('go').onclick=async()=>{
+  const u=$('u').value.trim();
+  if(!/^https:\/\/script\.google\.com\/.+\/exec$/.test(u)){show(false,'ลิงก์ต้องขึ้นต้นด้วย https://script.google.com/ และลงท้ายด้วย /exec');return}
+  $('go').disabled=true;$('go').textContent='กำลังทดสอบ…';
+  try{
+    const t0=performance.now(),res=await fetch(u+'?api=ping',{redirect:'follow'}),j=await res.json(),ms=Math.round(performance.now()-t0);
+    if(!j.ok)throw new Error(j.e||'ตอบกลับผิดรูปแบบ');
+    const p=await fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn:'getData',args:['x']})}).then(r=>r.json());
+    const apiOk=!p.ok&&/AUTH/.test(p.e||'');
+    show(apiOk,(apiOk?'✓ เชื่อมต่อสำเร็จ ('+ms+' ms) และ API ตอบถูกต้อง':'✕ ping ได้ แต่ API ตอบไม่ถูกต้อง: ตรวจว่าวาง Code.gs เวอร์ชันล่าสุดแล้ว Deploy ใหม่')
+      +(apiOk&&u!==cur?'<br>คัดลอกบรรทัดนี้ไปแทนในไฟล์ <b>config.js</b>:<pre></pre>':''));
+    const pre=$('res').querySelector('pre');if(pre)pre.textContent="window.STOCK_API = '"+u+"';";
+  }catch(e){show(false,'✕ เชื่อมต่อไม่ได้: '+String(e.message||e).replace(/[<>&]/g,'')+'<br>ตรวจรายการด้านล่าง โดยเฉพาะการตั้ง “ทุกคน” ตอน Deploy')}
+  finally{$('go').disabled=false;$('go').textContent='ทดสอบการเชื่อมต่อ'}
+};
+</script>
+</body>
+</html>
