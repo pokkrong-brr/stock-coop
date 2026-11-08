@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<script src="config.js?v=2026-11-08.2"></script>
+<script src="config.js?v=2026-11-08.3"></script>
 <title>สต็อกสหกรณ์สระว่ายน้ำ</title>
 <meta name="theme-color" content="#0a78c2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +142,18 @@ input:disabled,select:disabled{opacity:.55}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap}
 .pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.low{background:var(--warn-bg);color:var(--warn)}.pill.out{background:var(--bad-bg);color:var(--bad)}
 .pill.info{background:var(--accent-soft);color:var(--accent)}
+.bk-hero{display:flex;align-items:center;gap:16px;padding:16px 18px;border-radius:18px;margin-bottom:16px;color:#fff;background:linear-gradient(135deg,#1aa0e8,#0a5fb0 60%,#123f8f);box-shadow:0 10px 26px -14px #0a5fb0;position:relative;overflow:hidden}
+.bk-hero.warn{background:linear-gradient(135deg,#f0a43a,#d46f0a 60%,#a8520a)}.bk-hero.bad{background:linear-gradient(135deg,#f06a6a,#c63a3a 60%,#952828)}
+.bk-hero::after{content:"";position:absolute;inset:auto -10% -55% -10%;height:90%;background:radial-gradient(60% 60% at 50% 0,rgba(255,255,255,.22),transparent 70%);pointer-events:none}
+.bk-hero .bi{width:48px;height:48px;border-radius:15px;background:rgba(255,255,255,.2);display:grid;place-items:center;flex:none;backdrop-filter:blur(6px)}
+.bk-hero .bt{font:600 18px var(--f-display);line-height:1.3}.bk-hero .bs{font-size:13.5px;opacity:.92;margin-top:2px}
+.bk-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.bk-stats>div{padding:10px 12px;border-radius:14px;background:var(--accent-soft)}.bk-stats b{display:block;font:600 17px var(--f-display);color:var(--ink)}.bk-stats span{font-size:12.5px;color:var(--ink-2)}
+.bk-opts{display:grid;grid-template-columns:auto 1fr 1fr;gap:14px 18px;align-items:end;margin-bottom:14px}
+.bk-opts .seg{display:flex}.bk-opts .seg button{flex:1}
+.bk-acts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.bk-li .when{font-weight:600}.bk-li .tag{margin-left:6px}
+@media (max-width:700px){.bk-opts{grid-template-columns:1fr}.bk-stats b{font-size:15px}.bk-hero{padding:14px}.bk-hero .bt{font-size:16px}}
 .sync::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 .seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--hair);gap:2px;flex-wrap:wrap}
 .seg button{border:0;background:none;font:500 13px var(--f-body);color:var(--ink-2);padding:5px 12px;border-radius:999px;cursor:pointer}
@@ -388,6 +400,9 @@ body.staff .adm{display:none!important}
     <symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2.5 6h11v10h-11zM13.5 9.5h4l3 3.5v3h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></g></symbol>
     <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19c.6-3.2 3-5 6-5s5.4 1.8 6 5M15.5 5.6a3 3 0 0 1 0 5.8M17.5 14.3c1.8.6 3 2.2 3.5 4.7"/></g></symbol>
     <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3.5h10V9M7 17H4.5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h15a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H17M7 14h10v6.5H7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 8.6a4.5 4.5 0 0 1-.5 9.9H7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9.5 13.5 2.5-2.5 2.5 2.5M12 11v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-10Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5M4 9h10.5a5.5 5.5 0 0 1 0 11H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></g></symbol>
   </defs>
@@ -550,10 +565,20 @@ body.staff .adm{display:none!important}
         <label class="chk"><input type="checkbox" id="sLow">ส่งรายการสินค้าที่ถึงจุดสั่งซื้อ ทุกเช้า 08:00</label>
         <label class="chk"><input type="checkbox" id="sSum">ส่งสรุปยอดขายประจำวัน ทุกเย็น 18:00</label></div>
       <div class="row" style="margin-top:14px"><button class="btn fit" onclick="saveNotify()">บันทึก</button><button class="btn ghost fit" onclick="testEmail()">ทดสอบส่งอีเมลตอนนี้</button></div></div>
-    <div class="card glass adm"><div class="card-h"><div><h2>เงินสดและสำรองข้อมูล</h2><div class="sub" id="bkLine"></div></div></div>
-      <div class="row"><div><label for="sFloat">เงินทอนตั้งต้นในลิ้นชักแต่ละวัน (บาท)</label><input id="sFloat" type="number" inputmode="decimal" min="0" step="any"></div><button class="btn fit" onclick="saveFloat()">บันทึก</button></div>
-      <label class="chk" style="margin-top:16px"><input type="checkbox" id="sBk" onchange="saveBk()">สำรองไฟล์ชีตลง Google Drive ทุกวันอาทิตย์ 02:00 (เก็บ 12 ชุดล่าสุด)</label>
-      <div class="row" style="margin-top:12px;align-items:center"><button class="btn ghost fit" onclick="backupNow()">สำรองตอนนี้</button><span class="muted" id="bkOut"></span></div></div>
+    <div class="card glass adm" id="bkCard"><div class="card-h"><div class="ttl"><span class="hic"><svg width="20" height="20"><use href="#i-cloud"/></svg></span><div><h2>สำรองข้อมูล</h2><div class="sub">สำเนาไฟล์ชีตทั้งไฟล์ เก็บใน Google Drive ของเจ้าของ กู้คืนได้จากหน้านี้</div></div></div>
+      <button class="btn sm" onclick="backupNow()"><svg width="16" height="16"><use href="#i-cloud"/></svg>สำรองตอนนี้</button></div>
+      <div class="bk-hero" id="bkHero"><span class="bi"><svg width="26" height="26"><use href="#i-cloud"/></svg></span><div><div class="bt">กำลังโหลด…</div><div class="bs">&nbsp;</div></div></div>
+      <div class="bk-stats" id="bkStats"></div>
+      <div class="bk-opts">
+        <label class="chk" style="margin:0 0 6px"><input type="checkbox" id="sBk" onchange="saveBk()">สำรองอัตโนมัติ</label>
+        <div><div class="sub" style="margin-bottom:4px">ความถี่ (ตอนตี 2)</div><div class="seg" id="bkFreqSeg"><button data-f="daily">ทุกวัน</button><button data-f="weekly">ทุกวันอาทิตย์</button></div></div>
+        <div><div class="sub" style="margin-bottom:4px">เก็บไฟล์สำรองล่าสุด</div><div class="seg" id="bkKeepSeg"><button data-k="7">7 ชุด</button><button data-k="14">14 ชุด</button><button data-k="30">30 ชุด</button><button data-k="60">60 ชุด</button></div></div>
+      </div>
+      <div class="bk-acts" id="bkActs"></div>
+      <div class="sub" style="margin:14px 0 2px;font-weight:600;color:var(--ink)" id="bkListH">ไฟล์สำรอง</div>
+      <div id="bkList"><div class="empty">กำลังโหลด…</div></div></div>
+    <div class="card glass adm"><div class="card-h"><div><h2>เงินสด</h2><div class="sub">ใช้ตอนปิดยอดเงินสดประจำวัน</div></div></div>
+      <div class="row"><div><label for="sFloat">เงินทอนตั้งต้นในลิ้นชักแต่ละวัน (บาท)</label><input id="sFloat" type="number" inputmode="decimal" min="0" step="any"></div><button class="btn fit" onclick="saveFloat()">บันทึก</button></div></div>
     <div class="card glass adm" id="healthCard"><div class="card-h"><div class="ttl"><span class="hic g"><svg width="20" height="20"><use href="#i-gear"/></svg></span><div><h2>ตรวจสุขภาพระบบ</h2><div class="sub" id="hSub">ตรวจการตั้งค่าที่สำคัญต่อความปลอดภัยและการใช้งานจริง</div></div></div>
       <button class="btn ghost sm" onclick="runHealth()">ตรวจตอนนี้</button></div><div id="hList"><div class="empty">กด "ตรวจตอนนี้"</div></div></div>
     <div class="card glass adm"><div class="card-h"><div><h2>บันทึกการแก้ไข</h2><div class="sub">ใครแก้อะไร เมื่อไร (300 รายการล่าสุด)</div></div><input id="auSearch" placeholder="ค้นหา" style="max-width:220px" autocomplete="off"></div>
@@ -646,6 +671,16 @@ body.staff .adm{display:none!important}
   <div class="row" style="margin-top:20px;justify-content:flex-end"><button class="btn ghost fit" onclick="udlg.close()">ยกเลิก</button><button class="btn fit" onclick="saveUser()">บันทึก</button></div>
 </div></dialog>
 
+<dialog id="bkdlg"><div class="glass" style="max-width:460px">
+  <h2 style="font:600 20px var(--f-display);margin:0 0 6px">กู้คืนข้อมูลจากไฟล์สำรอง</h2>
+  <p class="sub" style="margin:0 0 10px" id="bkdWhen"></p>
+  <div class="sub" style="line-height:1.7;margin-bottom:12px"><b style="color:var(--ink)">จะถูกแทนที่ด้วยข้อมูลในไฟล์สำรอง:</b> สินค้าและสต็อก · ประวัติขาย/รับ/คืน · ผู้จำหน่าย · ใบสั่งซื้อ · ปิดยอดเงินสด · รูปสินค้า<br>
+    <b style="color:var(--ink)">ไม่เปลี่ยน:</b> บัญชีเจ้าหน้าที่และรหัสผ่าน · ตั้งค่า · บันทึกการแก้ไข<br>
+    <span class="pill ok" style="margin-top:6px">ปลอดภัย</span> ระบบจะสำรองข้อมูลปัจจุบันไว้ให้ก่อนอัตโนมัติ ถ้ากู้ผิดไฟล์ก็กู้กลับได้</div>
+  <label for="bkdIn">พิมพ์คำว่า <b>กู้คืน</b> เพื่อยืนยัน</label><input id="bkdIn" autocomplete="off" placeholder="กู้คืน">
+  <div class="sub" id="bkdErr" style="color:var(--bad);min-height:20px;margin-top:8px"></div>
+  <div class="row" style="justify-content:flex-end;margin-top:4px"><button class="btn ghost fit" onclick="bkdlg.close()">ยกเลิก</button><button class="btn fit" id="bkdBtn" onclick="restoreGo()" style="background:linear-gradient(135deg,#f06a6a,#c63a3a)">กู้คืนข้อมูล</button></div>
+</div></dialog>
 <dialog id="rdlg"><div class="glass">
   <div id="receiptBox"></div>
   <div class="row" style="margin-top:16px;justify-content:flex-end"><button class="btn ghost fit" onclick="rdlg.close()">ปิด</button><button class="btn fit printable" onclick="printReceipt()">พิมพ์</button></div>
@@ -803,7 +838,7 @@ function mergeServer(r){
   store.set(CACHE,server);
   if(r.me&&sess&&(r.me.role!==sess.role||String(r.me.perms)!==String(sess.perms))){sess.role=r.me.role;sess.perms=r.me.perms;store.set(SKEY,sess);applySession()}
 }
-const syncArg=()=>({row:server.lastRow,vers:server.vers||{}});
+const syncArg=()=>({row:server.lastRow,vers:server.vers||{},ep:server.ep});
 
 /* ===================== เชื่อมต่อชีต ===================== */
 /* เปิดผ่าน Apps Script → ใช้ google.script.run · เปิดจาก GitHub Pages → ส่ง POST ไปที่ลิงก์ /exec ใน config.js */
@@ -1325,7 +1360,8 @@ async function saveNotify(silent){const e=$('sEmails').value.trim();
   const r=await run('saveSettings',{emails:e,notifyLow:$('sLow').checked,notifySummary:$('sSum').checked});if(r&&!silent)toast('บันทึกการแจ้งเตือนแล้ว');return r}
 async function saveFloat(){if(await run('saveSettings',{float:+$('sFloat').value||0}))toast('บันทึกเงินทอนตั้งต้นแล้ว')}
 async function saveBk(){if(await run('saveSettings',{backup:$('sBk').checked}))toast($('sBk').checked?'เปิดสำรองข้อมูลอัตโนมัติแล้ว':'ปิดสำรองข้อมูลอัตโนมัติแล้ว')}
-async function adminCall(fn,text){busy(true,text||'กำลังทำงาน…');try{return await api(fn,sess.token)}catch(e){isAuthErr(e)?expired(e):toast(isUserErr(e)?errText(e):'เชื่อมต่อไม่ได้ ลองใหม่อีกครั้ง',true);return null}finally{busy(false)}}
+async function adminCall(fn,text){return adminCall0(fn,[],text)}
+async function adminCall0(fn,args,text){busy(true,text||'กำลังทำงาน…');try{return await api(fn,sess.token,...args)}catch(e){isAuthErr(e)?expired(e):toast(isUserErr(e)?errText(e):'เชื่อมต่อไม่ได้ ลองใหม่อีกครั้ง',true);return null}finally{busy(false)}}
 async function testEmail(){if(!$('sEmails').value.trim()){toast('ใส่อีเมลผู้รับก่อน',true);$('sEmails').focus();return}
   if(!await saveNotify(true))return;const r=await adminCall('sendTestEmail','กำลังส่งอีเมลทดสอบ…');if(!r)return;
   toast(DEMO?'เดโม: แสดงตัวอย่างอีเมล ไม่ได้ส่งจริง':'ส่งอีเมลทดสอบไปที่ '+r.to.join(', ')+' แล้ว');
@@ -1335,17 +1371,54 @@ async function runHealth(){$('hList').innerHTML='<div class="empty">กำลั
   try{const r=await api('healthCheck',sess.token),I={ok:['ok','✓'],warn:['low','!'],bad:['out','✕']};
     const bad=r.items.filter(i=>i.st!=='ok').length;
     $('hSub').innerHTML=`คะแนน <b>${r.score}/100</b> · ${bad?`ควรแก้ ${bad} ข้อ`:'ผ่านทุกข้อ'} · ตรวจเมื่อ ${fmtT(r.t)}`;
-    $('hList').innerHTML=r.items.map(i=>`<div class="li"><span class="pill ${I[i.st][0]}" style="min-width:30px;justify-content:center">${I[i.st][1]}</span><div class="grow"><b>${esc(i.name)}</b><span class="sub">${esc(i.detail)}${i.st!=='ok'&&i.fix?' · <b style="display:inline;font-weight:500;color:var(--ink-2)">วิธีแก้:</b> '+esc(i.fix):''}</span></div></div>`).join('')}
+    $('hList').innerHTML=r.items.map(i=>`<div class="li"><span class="pill ${I[i.st][0]}" style="min-width:30px;justify-content:center">${I[i.st][1]}</span><div class="grow"><b>${esc(i.name)}</b><span class="sub">${esc(i.detail)}${i.st!=='ok'&&i.fix?' · <b style="display:inline;font-weight:500;color:var(--ink-2)">วิธีแก้:</b> '+esc(i.fix):''}</span></div>${i.st!=='ok'&&/สำรองข้อมูล/.test(i.name)?'<button class="btn sm" onclick="backupNow()">สำรองตอนนี้</button>':''}</div>`).join('')}
   catch(e){if(isAuthErr(e))return expired(e);$('hList').innerHTML='<div class="empty">'+esc(isUserErr(e)?errText(e):'เชื่อมต่อไม่ได้')+'</div>'}}
-async function loadAdmin(){runHealth();try{const r=await api('adminInfo',sess.token);adm=r;users=r.users;rUsers();rAudit();rTrig()}catch(e){if(isAuthErr(e))expired(e);else $('userList').innerHTML='<div class="empty">โหลดข้อมูลไม่ได้</div>'}}
+async function loadAdmin(){runHealth();loadBk();try{const r=await api('adminInfo',sess.token);adm=r;users=r.users;rUsers();rAudit();rTrig()}catch(e){if(isAuthErr(e))expired(e);else $('userList').innerHTML='<div class="empty">โหลดข้อมูลไม่ได้</div>'}}
 function rTrig(){const t=adm.triggers,lb=db.settings&&db.settings.lastBackup;
-  $('bkLine').textContent=lb?'สำรองล่าสุด '+(typeof lb==='number'?fmtDT(lb):lb):'ยังไม่เคยสำรองข้อมูล';
   if(!t){$('trigLine').textContent='';return}
-  $('trigLine').innerHTML=['morningJob','eveningJob','backupJob'].every(j=>t.includes(j))?'<span class="pill ok">ตั้งเวลาแล้ว</span> 08:00 แจ้งใกล้หมด · 18:00 สรุปยอด · อาทิตย์ 02:00 สำรองข้อมูล':'<span class="pill low">ยังไม่ได้ตั้งเวลางานอัตโนมัติ</span> กดปุ่มทางขวา'}
-async function installTrig(){const r=await adminCall('installTriggers','กำลังตั้งเวลา…');if(r){adm=r;users=r.users;rTrig();toast('ตั้งเวลางานอัตโนมัติแล้ว')}}
-async function backupNow(){const r=await adminCall('backupNow','กำลังสำรองข้อมูลลง Google Drive…');if(!r)return;
-  $('bkOut').innerHTML=DEMO?'เดโม: จำลองการสำรอง ไม่ได้สร้างไฟล์จริง':`สร้างแล้ว: <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a> · <a href="${esc(r.folder)}" target="_blank" rel="noopener">เปิดโฟลเดอร์</a>`;
-  toast('สำรองข้อมูลแล้ว');reload()}
+  $('trigLine').innerHTML=['morningJob','eveningJob','backupJob'].every(j=>t.includes(j))?'<span class="pill ok">ตั้งเวลาแล้ว</span> 08:00 แจ้งใกล้หมด · 18:00 สรุปยอด · 02:00 สำรองข้อมูล':'<span class="pill low">ยังไม่ได้ตั้งเวลางานอัตโนมัติ</span> กดปุ่มทางขวา'}
+async function installTrig(){const r=await adminCall('installTriggers','กำลังตั้งเวลา…');if(r){adm=r;users=r.users;rTrig();loadBk();toast('ตั้งเวลางานอัตโนมัติแล้ว')}}
+/* ---------- สำรองข้อมูล ---------- */
+let bk=null,bkPick=null;
+const agoTH=t=>{const m=Math.round((Date.now()-t)/6e4);return m<1?'เมื่อสักครู่':m<60?m+' นาทีที่แล้ว':m<1440?Math.floor(m/60)+' ชั่วโมงที่แล้ว':Math.floor(m/1440)+' วันที่แล้ว'};
+const dayTH=t=>{const d=new Date(t),n=new Date(),k=x=>x.toDateString(),y=new Date(n-864e5),tm=new Date(+n+864e5);
+  const hm=d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})+' น.';
+  return (k(d)===k(n)?'วันนี้ ':k(d)===k(y)?'เมื่อวาน ':k(d)===k(tm)?'พรุ่งนี้ ':d.toLocaleDateString('th-TH',{weekday:'short',day:'numeric',month:'short',year:'2-digit'})+' ')+hm};
+function nextBk(freq){const d=new Date();d.setHours(2,0,0,0);if(d<=new Date())d.setDate(d.getDate()+1);if(freq==='weekly')while(d.getDay()!==0)d.setDate(d.getDate()+1);return d.getTime()}
+async function loadBk(){try{bk=await api('backupInfo',sess.token);rBk()}catch(e){if(isAuthErr(e))return expired(e);$('bkList').innerHTML='<div class="empty">'+esc(isUserErr(e)?errText(e):'โหลดรายการไฟล์สำรองไม่ได้')+'</div>'}}
+function rBk(){if(!bk)return;const st=bk.state||{},hero=$('bkHero'),last=bk.last;
+  hero.className='bk-hero'+(st.st==='ok'?'':st.st==='bad'?' bad':' warn');
+  hero.querySelector('.bt').textContent=bk.err?'สำรองข้อมูลครั้งล่าสุดไม่สำเร็จ':last?'สำรองล่าสุด '+dayTH(last):'ยังไม่เคยสำรองข้อมูล';
+  hero.querySelector('.bs').textContent=bk.err?String(bk.err.m||''):last?(st.st==='ok'?'ข้อมูลปลอดภัย · ':'')+agoTH(last)+(st.st==='ok'?'':' · ควรกด "สำรองตอนนี้"'):'กด "สำรองตอนนี้" เพื่อสร้างไฟล์สำรองชุดแรก';
+  const next=bk.auto?(bk.trigOk?dayTH(nextBk(bk.freq)):'ยังไม่ได้ตั้งเวลา'):'ปิดอยู่';
+  $('bkStats').innerHTML=`<div><span>ครั้งถัดไป</span><b>${esc(next)}</b></div><div><span>ไฟล์สำรองที่มี</span><b>${bk.list.length} / ${bk.keep} ชุด</b></div><div><span>เก็บย้อนหลังได้ถึง</span><b>${bk.list.length?esc(new Date(bk.list[bk.list.length-1].t).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'2-digit'})):'-'}</b></div>`;
+  $('sBk').checked=!!bk.auto;
+  $$('#bkFreqSeg button').forEach(b=>b.classList.toggle('on',b.dataset.f===bk.freq));
+  $$('#bkKeepSeg button').forEach(b=>b.classList.toggle('on',+b.dataset.k===+bk.keep));
+  const xlsx=db.url?db.url.replace(/\/edit.*$/,'')+'/export?format=xlsx':'';
+  $('bkActs').innerHTML=(xlsx?`<a class="btn ghost sm" href="${esc(xlsx)}" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#i-down"/></svg>ดาวน์โหลดเป็น Excel</a>`:'')
+    +(bk.folder?`<a class="btn ghost sm" href="${esc(bk.folder)}" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#i-folder"/></svg>เปิดโฟลเดอร์ใน Drive</a>`:'')
+    +(bk.auto&&!bk.trigOk?`<button class="btn sm" onclick="installTrig()">ตั้งเวลาสำรองอัตโนมัติ</button>`:'');
+  $('bkListH').textContent='ไฟล์สำรอง ('+bk.list.length+')';
+  $('bkList').innerHTML=bk.list.length?bk.list.map((f,i)=>{const pre=/ก่อนกู้คืน/.test(f.name);
+    return `<div class="li bk-li"><span class="hic ${pre?'o':i?'':'g'}" style="width:32px;height:32px;border-radius:10px"><svg width="16" height="16"><use href="#${pre?'i-undo':'i-cloud'}"/></svg></span>
+      <div class="grow"><b><span class="when">${esc(dayTH(f.t))}</span>${i===0?'<span class="pill ok tag">ล่าสุด</span>':''}${pre?'<span class="pill low tag">ก่อนกู้คืน</span>':''}</b><span class="sub">${esc(agoTH(f.t))}</span></div>
+      ${f.url&&f.url!=='#'?`<a class="btn ghost sm" href="${esc(f.url)}" target="_blank" rel="noopener">เปิด</a>`:''}<button class="btn ghost sm" onclick="restoreAsk(${i})"><svg width="16" height="16"><use href="#i-undo"/></svg>กู้คืน</button></div>`}).join('')
+    :'<div class="empty">ยังไม่มีไฟล์สำรอง</div>'}
+async function backupNow(){const r=await adminCall0('backupNow',[],'กำลังสำรองข้อมูลลง Google Drive…');if(!r)return;
+  bk=r;rBk();toast(DEMO?'เดโม: จำลองการสำรองข้อมูลแล้ว':'สำรองข้อมูลแล้ว');reload();if($('hList').querySelector('.li'))runHealth()}
+async function saveBk(){if(await run('saveSettings',{backup:$('sBk').checked})){toast($('sBk').checked?'เปิดสำรองข้อมูลอัตโนมัติแล้ว':'ปิดสำรองข้อมูลอัตโนมัติแล้ว');loadBk()}}
+async function saveBkOpt(patch,msg){if(await run('saveSettings',patch)){toast(msg);loadBk()}}
+$('bkFreqSeg').onclick=e=>{const b=e.target.closest('button');if(!b||!bk||b.dataset.f===bk.freq)return;saveBkOpt({bkFreq:b.dataset.f},b.dataset.f==='daily'?'สำรองทุกวัน ตี 2':'สำรองทุกวันอาทิตย์ ตี 2')};
+$('bkKeepSeg').onclick=e=>{const b=e.target.closest('button');if(!b||!bk||+b.dataset.k===+bk.keep)return;saveBkOpt({bkKeep:+b.dataset.k},'เก็บไฟล์สำรองล่าสุด '+b.dataset.k+' ชุด')};
+function restoreAsk(i){const f=bk&&bk.list[i];if(!f)return;bkPick=f;
+  $('bkdWhen').innerHTML='ไฟล์สำรองเมื่อ <b>'+esc(dayTH(f.t))+'</b> ('+esc(agoTH(f.t))+') · ข้อมูลที่บันทึกหลังจากนั้นจะหายไปจากหน้าโปรแกรม';
+  $('bkdIn').value='';$('bkdErr').textContent='';$$('dialog[open]').forEach(d=>d.close());bkdlg.showModal();setTimeout(()=>$('bkdIn').focus(),50)}
+async function restoreGo(){if($('bkdIn').value.trim()!=='กู้คืน'){$('bkdErr').textContent='พิมพ์คำว่า กู้คืน ให้ถูกต้องก่อน';return}
+  if(queue.length){$('bkdErr').textContent='ยังมีรายการรอส่ง '+queue.length+' รายการ รอให้ส่งเสร็จก่อน';return}
+  bkdlg.close();const r=await adminCall0('restoreBackup',[bkPick.id,'กู้คืน'],'กำลังกู้คืนข้อมูล… (อาจใช้เวลาสักครู่)');if(!r)return;
+  bk=r.info;rBk();await reload(true);
+  const c=r.counts||{};toast('กู้คืนแล้ว · สินค้า '+(c['สินค้า']??'-')+' รายการ · ความเคลื่อนไหว '+(c['ความเคลื่อนไหว']??'-')+' แถว');runHealth()}
 function rAudit(){const q=$('auSearch').value.trim().toLowerCase(),L=(adm.audit||[]).filter(a=>!q||(a.who+' '+a.what+' '+a.detail).toLowerCase().includes(q));
   $('auditList').innerHTML=L.length?`<table><tr><th>เวลา</th><th>ผู้ทำ</th><th>รายการ</th><th>รายละเอียด</th></tr>${L.slice(0,150).map(a=>`<tr><td>${fmtDT(a.t)}</td><td>${esc(a.who)}</td><td>${esc(a.what)}</td><td class="wrap">${esc(a.detail)}</td></tr>`).join('')}</table>`:'<div class="empty">ยังไม่มีบันทึก</div>'}
 $('auSearch').oninput=rAudit;
